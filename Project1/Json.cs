@@ -19,6 +19,7 @@ namespace Project1
         public JasOn(DbSet<Employee> data)
 
         {
+            try { 
             using (FileStream fs = new FileStream("employee.json", FileMode.OpenOrCreate))
             {
                 var options = new JsonSerializerOptions
@@ -32,6 +33,11 @@ namespace Project1
                 file.Close();
 
                 MessageBox.Show("Отчет Сохранен");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось сохранить файл");
             }
         }
     }

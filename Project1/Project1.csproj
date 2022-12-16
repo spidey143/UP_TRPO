@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Reports\Новая папка\**" />
+    <EmbeddedResource Remove="Reports\Новая папка\**" />
+    <None Remove="Reports\Новая папка\**" />
+    <Page Remove="Reports\Новая папка\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.19.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="EPPlus" Version="6.1.1" />
