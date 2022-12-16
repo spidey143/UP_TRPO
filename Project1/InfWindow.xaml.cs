@@ -4,12 +4,12 @@ namespace Project1
 {
     public partial class InfWindow : Window
     {
-        public User User { get; private set; }
-        public InfWindow(User user)
+        public Employee Employee { get; private set; }
+        public InfWindow(Employee employee)
         {
             InitializeComponent();
-            User = user;
-            DataContext = User;
+            Employee = employee;
+            DataContext = Employee;
         }
 
         void Accept_Click(object sender, RoutedEventArgs e)

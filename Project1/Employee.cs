@@ -1,6 +1,6 @@
 namespace Project1
 {
-    public class User
+    public class Employee
     {
         public int Id { get; set; } 
         public int PersonalId { get; set; }

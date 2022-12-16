@@ -9,7 +9,7 @@
             <ColumnDefinition />
             <ColumnDefinition  Width="150"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="usersList" ItemsSource="{Binding}" BorderBrush="White" Margin="15,0,0,0">
+        <ListBox x:Name="employeesList" ItemsSource="{Binding}" BorderBrush="White" Margin="15,0,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -29,7 +29,7 @@
             <Button Content="Изменить" Margin="10" Click="Edit_Click" BorderBrush="#FF19E0A5"  />
             <Button Content="Подробнее" Margin="10" Click="Inf_Click" BorderBrush="#FF7F1AFD"  />
             <Button Content="Удалить" Margin="10" Click="Delete_Click" BorderBrush="#FFE8210D"  />
-            <Button Content="Экспорт в JSON" Margin="10" Click="Delete_Click" BorderBrush="#FF0433F1"  />
+            <Button Content="Экспорт в JSON" Margin="10" Click="Jason_export_Click" BorderBrush="#FF0433F1"  />
             <Button x:Name="ExcelImport" Content="Экспорт в Excel" Margin="10" Click="ExcelImport_Click" BorderBrush="#FF0833DE"  />
         </StackPanel>
     </Grid>

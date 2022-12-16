@@ -38,19 +38,19 @@ namespace Project1
             // гарантируем, что база данных создана
             db.Database.EnsureCreated();
             // загружаем данные из БД
-            db.Users.Load();
+            db.Employees.Load();
             // и устанавливаем данные в качестве контекста
-            DataContext = db.Users.Local.ToObservableCollection();
+            DataContext = db.Employees.Local.ToObservableCollection();
         }
 
         // добавление
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            UserWindow UserWindow = new UserWindow(new User());
-            if (UserWindow.ShowDialog() == true)
+            EmployeeWindow EmployeeWindow= new EmployeeWindow(new Employee());
+            if (EmployeeWindow.ShowDialog() == true)
             {
-                User User = UserWindow.User;
-                db.Users.Add(User);
+                Employee Employee = EmployeeWindow.Employee;
+                db.Employees.Add(Employee);
                 db.SaveChanges();
             }
         }
@@ -58,37 +58,37 @@ namespace Project1
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             // получаем выделенный объект
-            User? user = usersList.SelectedItem as User;
+            Employee? employee = employeesList.SelectedItem as Employee;
             // если ни одного объекта не выделено, выходим
-            if (user is null) return;
+            if (employee is null) return;
 
-            UserWindow UserWindow = new UserWindow(new User
+            EmployeeWindow EmployeeWindow = new EmployeeWindow(new Employee
             {
-                Id = user.Id,
-                PersonalId = user.Id,
-                LastName = user.LastName,
-                Name = user.Name,
-                Patronymic = user.Patronymic,
-                DateBirth = user.DateBirth,
-                Phone = user.Phone,
-                Department = user.Department,
+                Id = employee.Id,
+                PersonalId = employee.Id,
+                LastName = employee.LastName,
+                Name = employee.Name,
+                Patronymic = employee.Patronymic,
+                DateBirth = employee.DateBirth,
+                Phone = employee.Phone,
+                Department = employee.Department,
             });
 
-            if (UserWindow.ShowDialog() == true)
+            if (EmployeeWindow.ShowDialog() == true)
             {
                 // получаем измененный объект
-                user = db.Users.Find(UserWindow.User.Id);
-                if (user != null)
+                employee = db.Employees.Find(EmployeeWindow.Employee.Id);
+                if (employee != null)
                 {
-                    user.PersonalId = UserWindow.User.PersonalId;
-                    user.LastName = UserWindow.User.LastName;
-                    user.Name = UserWindow.User.Name;
-                    user.Patronymic = UserWindow.User.Patronymic;
-                    user.DateBirth = UserWindow.User.DateBirth;
-                    user.Phone = UserWindow.User.Phone;
-                    user.Department = UserWindow.User.Department;
+                    employee.PersonalId = EmployeeWindow.Employee.PersonalId;
+                    employee.LastName = EmployeeWindow.Employee.LastName;
+                    employee.Name = EmployeeWindow.Employee.Name;
+                    employee.Patronymic = EmployeeWindow.Employee.Patronymic;
+                    employee.DateBirth = EmployeeWindow.Employee.DateBirth;
+                    employee.Phone = EmployeeWindow.Employee.Phone;
+                    employee.Department = EmployeeWindow.Employee.Department;
                     db.SaveChanges();
-                    usersList.Items.Refresh();
+                    employeesList.Items.Refresh();
                 }
             }
         }
@@ -96,17 +96,17 @@ namespace Project1
         private void Inf_Click(object sender, RoutedEventArgs e)
         {
             // получаем выделенный объект
-            User? user = usersList.SelectedItem as User;
+            Employee? employee = employeesList.SelectedItem as Employee;
             // если ни одного объекта не выделено, выходим
-            if (user is null) return;
+            if (employee is null) return;
 
-            InfWindow InfWindow = new InfWindow(user);
+            InfWindow InfWindow = new InfWindow(employee);
             if (InfWindow.ShowDialog() == true)
             {
-                user = db.Users.Find(InfWindow.User.Id);
-                if (user != null)
+                employee = db.Employees.Find(InfWindow.Employee.Id);
+                if (employee != null)
                 {
-                    usersList.Items.Refresh();
+                    employeesList.Items.Refresh();
                 }
             }
         }
@@ -115,16 +115,20 @@ namespace Project1
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             // получаем выделенный объект
-            User? user = usersList.SelectedItem as User;
+            Employee? employee = employeesList.SelectedItem as Employee;
             // если ни одного объекта не выделено, выходим
-            if (user is null) return;
-            db.Users.Remove(user);
+            if (employee is null) return;
+            db.Employees.Remove(employee);
             db.SaveChanges();
         }
 
         private void ExcelImport_Click(object sender, RoutedEventArgs e)
         {
-            Excel excel = new Excel(db.Users);
+            Excel excel = new Excel(db.Employees);
+        }
+        private void Jason_export_Click(object sender, RoutedEventArgs e)
+        {
+            JasOn jason = new JasOn(db.Employees);
         }
     }
 }

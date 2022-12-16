@@ -2,14 +2,14 @@ using Project1;
 using System.Windows;
 namespace Project1
 {
-    public partial class UserWindow : Window
+    public partial class EmployeeWindow : Window
     {
-        public User User { get; private set; }
-        public UserWindow(User user)
+        public Employee Employee { get; private set; }
+        public EmployeeWindow(Employee employee)
         {
             InitializeComponent();
-            User = user;
-            DataContext = User;
+            Employee = employee;
+            DataContext = Employee;
         }
 
         void Accept_Click(object sender, RoutedEventArgs e)

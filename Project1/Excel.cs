@@ -13,7 +13,7 @@ namespace Project1
 {
     internal class Excel
     {
-        public Excel(DbSet<User> data)
+        public Excel(DbSet<Employee> data)
         {
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
@@ -37,16 +37,16 @@ namespace Project1
                 worksheet.Cells["G1"].Value = "Дата рождения";
                 worksheet.Cells["H1"].Value = "Отдел";
                 int count = 2;
-                foreach (User user in data)
+                foreach (Employee employee in data)
                 {
-                    worksheet.Cells[count, 1].Value = user.Id;
-                    worksheet.Cells[count, 2].Value = user.PersonalId;
-                    worksheet.Cells[count, 3].Value = user.LastName;
-                    worksheet.Cells[count, 4].Value = user.Name;
-                    worksheet.Cells[count, 5].Value = user.Patronymic;
-                    worksheet.Cells[count, 6].Value = user.Phone;
-                    worksheet.Cells[count, 7].Value = user.DateBirth;
-                    worksheet.Cells[count, 8].Value = user.Department;
+                    worksheet.Cells[count, 1].Value = employee.Id;
+                    worksheet.Cells[count, 2].Value = employee.PersonalId;
+                    worksheet.Cells[count, 3].Value = employee.LastName;
+                    worksheet.Cells[count, 4].Value = employee.Name;
+                    worksheet.Cells[count, 5].Value = employee.Patronymic;
+                    worksheet.Cells[count, 6].Value = employee.Phone;
+                    worksheet.Cells[count, 7].Value = employee.DateBirth;
+                    worksheet.Cells[count, 8].Value = employee.Department;
                     count++;
                 }
                 //Save your file
