@@ -30,7 +30,7 @@
             <Button Content="Подробнее" Margin="10" Click="Inf_Click" BorderBrush="#FF7F1AFD"  />
             <Button Content="Удалить" Margin="10" Click="Delete_Click" BorderBrush="#FFE8210D"  />
             <Button Content="Экспорт в JSON" Margin="10" Click="Delete_Click" BorderBrush="#FF0433F1"  />
-            <Button Content="Экспорт в Excel" Margin="10" Click="Delete_Click" BorderBrush="#FF0833DE"  />
+            <Button x:Name="ExcelImport" Content="Экспорт в Excel" Margin="10" Click="ExcelImport_Click" BorderBrush="#FF0833DE"  />
         </StackPanel>
     </Grid>
 </Window>

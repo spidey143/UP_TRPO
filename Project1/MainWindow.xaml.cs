@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 
 namespace Project1
 {
@@ -117,6 +120,11 @@ namespace Project1
             if (user is null) return;
             db.Users.Remove(user);
             db.SaveChanges();
+        }
+
+        private void ExcelImport_Click(object sender, RoutedEventArgs e)
+        {
+            Excel excel = new Excel(db.Users);
         }
     }
 }
