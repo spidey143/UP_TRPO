@@ -1,5 +1,7 @@
 using Project1;
 using System.Windows;
+using System;
+
 namespace Project1
 {
     public partial class EmployeeWindow : Window
@@ -12,8 +14,17 @@ namespace Project1
             DataContext = Employee;
         }
 
-        void Accept_Click(object sender, RoutedEventArgs e)
+        private void Accept_Click(object sender, RoutedEventArgs e)
         {
+            if (String.IsNullOrEmpty(Employee.LastName)
+                || String.IsNullOrEmpty(Employee.Name)
+                || String.IsNullOrEmpty(Employee.Patronymic)
+                || String.IsNullOrEmpty(Employee.Phone)
+                || String.IsNullOrEmpty(Employee.Department)
+                || String.IsNullOrEmpty(Employee.DateBirth))
+            {
+                MessageBox.Show("Не все поля заполнены!", "Ошибка"); return;
+            }
             DialogResult = true;
         }
     }
